@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Orders | GreenLeaf</title>
+
+    <meta name="description" content="View your GreenLeaf order history.">
+
+    <link rel="stylesheet" href="../css/style.css?v=2">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        .order-card {
+            background: white;
+            border: 1px solid #e4ece1;
+            border-radius: 16px;
+            padding: 20px 22px;
+            margin-bottom: 18px;
+        }
+
+        .order-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding-bottom: 14px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid #eef3ec;
+        }
+
+        .order-id {
+            color: #234d20;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .order-date {
+            color: #7c8c80;
+            font-size: 12px;
+        }
+
+        .order-status {
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            background: #e9f5e8;
+            color: #2f7d32;
+        }
+
+        .order-products {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .order-product-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .order-product-row img {
+            width: 55px;
+            height: 55px;
+            border-radius: 10px;
+            object-fit: cover;
+            background: #f3f7f1;
+        }
+
+        .order-product-info {
+            flex: 1;
+        }
+
+        .order-product-info h4 {
+            color: #234d20;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .order-product-info span {
+            color: #7c8c80;
+            font-size: 12px;
+        }
+
+        .order-product-price {
+            color: #315f2b;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .order-card-total {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            padding-top: 12px;
+            border-top: 1px solid #eef3ec;
+            color: #234d20;
+            font-weight: 700;
+        }
+
+        .empty-orders {
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .empty-orders i {
+            font-size: 50px;
+            color: #9ab493;
+            margin-bottom: 18px;
+        }
+
+        .empty-orders h2 {
+            color: #234d20;
+            margin-bottom: 8px;
+        }
+
+        .empty-orders p {
+            color: #777;
+            margin-bottom: 22px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            <i class="fa-solid fa-leaf"></i>
+            <span>GreenLeaf</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="../index.html">Home</a>
+            <a href="plants.html">Plants</a>
+            <a href="categories.html">Categories</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+
+            <a href="products.html" title="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+
+            <a href="wishlist.html" class="nav-icon">
+                <i class="fa-regular fa-heart"></i>
+                <span class="wishlist-count"></span>
+            </a>
+
+            <a href="cart.html" title="Cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count"></span>
+            </a>
+
+            <a href="profile.html" title="My Profile">
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="page-header">
+        <div class="section-heading">
+            <p>YOUR ORDER HISTORY</p>
+            <h2>My Orders</h2>
+            <span>Track and review everything you've ordered so far.</span>
+        </div>
+    </section>
+
+
+    <!-- ================= PROFILE ================= -->
+
+    <section class="profile-section">
+
+        <!-- Sidebar -->
+
+        <aside class="profile-sidebar">
+
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h3 id="sidebarName">Priya Raman</h3>
+            <p id="sidebarEmail">priya.raman@example.com</p>
+
+            <nav class="profile-nav">
+
+                <a href="login.html">
+                    <i class="fa-solid fa-user"></i>
+                    My Profile
+                </a>
+
+                <a href="orders.html" class="active">
+                    <i class="fa-solid fa-box"></i>
+                    My Orders
+                </a>
+
+                <a href="wishlist.html">
+                    <i class="fa-regular fa-heart"></i>
+                    Wishlist
+                </a>
+
+                <a href="address.html">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Saved Addresses
+                </a>
+
+                <a href="../index.html" class="logout-link" onclick="logoutUser()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- Main Content -->
+
+        <div class="profile-content">
+
+            <div class="profile-card">
+
+                <div class="profile-card-header">
+                    <h2>Order History</h2>
+                    <span>Everything you've checked out, most recent first</span>
+                </div>
+
+                <div id="ordersList"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-column">
+
+                <div class="footer-logo">
+                    <i class="fa-solid fa-leaf"></i>
+                    GreenLeaf
+                </div>
+
+                <p>Your online destination for beautiful, healthy and affordable plants.</p>
+
+                <div class="social-icons">
+                    <a href="#" class="facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="twitter" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="../index.html">Home</a>
+                <a href="products.html">Plants</a>
+                <a href="categories.html">Categories</a>
+                <a href="about.html">About Us</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <a href="login.html">My Account</a>
+                <a href="cart.html">My Cart</a>
+                <a href="#">Wishlist</a>
+                <a href="contact.html">Help Center</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Tamil Nadu, India</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-envelope"></i> support@greenleaf.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 GreenLeaf. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="../js/script.js?v=2"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            if (!isLoggedIn()) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            displayOrders();
+
+        });
+
+
+        function displayOrders() {
+
+            const orders = getOrders();
+            const container = document.getElementById("ordersList");
+
+            if (orders.length === 0) {
+
+                container.innerHTML = `
+                    <div class="empty-orders">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h2>No Orders Yet</h2>
+                        <p>Your placed orders will show up here.</p>
+                        <a href="plants.html" class="btn primary-btn">Start Shopping</a>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = "";
+
+            orders.forEach(function (order) {
+
+                const card = document.createElement("div");
+                card.className = "order-card";
+
+                const orderDate = new Date(order.date).toLocaleDateString("en-IN", {
+                    day: "numeric", month: "short", year: "numeric"
+                });
+
+                let productsHtml = "";
+
+                order.items.forEach(function (item) {
+                    productsHtml += `
+                        <div class="order-product-row">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="order-product-info">
+                                <h4>${item.name}</h4>
+                                <span>Qty: ${item.quantity}</span>
+                            </div>
+                            <div class="order-product-price">₹${item.price * item.quantity}</div>
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="order-card-top">
+                        <div>
+                            <div class="order-id">Order ${order.id}</div>
+                            <div class="order-date">${orderDate}</div>
+                        </div>
+                        <div class="order-status">${order.status}</div>
+                    </div>
+                    <div class="order-products">
+                        ${productsHtml}
+                    </div>
+                    <div class="order-card-total">
+                        <span>Total Paid:</span>
+                        <span>₹${order.total.toFixed(0)}</span>
+                    </div>
+                `;
+
+                container.appendChild(card);
+
+            });
+
+        }
+
+    </script>
+
+</body>
+
+</html>

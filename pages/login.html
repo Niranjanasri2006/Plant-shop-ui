@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | GreenLeaf</title>
+
+    <meta name="description"
+        content="Manage your GreenLeaf account, orders, wishlist and personal details.">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css?v=2">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        .login-gate-section {
+            padding: 60px 6% 90px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 40px 36px;
+            width: 100%;
+            max-width: 560px;
+            text-align: center;
+        }
+
+        .login-card .profile-avatar {
+            margin-bottom: 14px;
+        }
+
+        .login-card h3 {
+            color: var(--dark);
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .login-card > p {
+            color: var(--text);
+            font-size: 13px;
+            margin-bottom: 26px;
+        }
+
+        .login-card form {
+            text-align: left;
+        }
+
+        .login-card .btn {
+            width: 100%;
+            justify-content: center;
+            margin-top: 6px;
+        }
+
+        .login-demo-note {
+            margin-top: 18px;
+            font-size: 12px;
+            color: #7c8c80;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-leaf"></i>
+
+            <span>
+                GreenLeaf
+            </span>
+
+        </div>
+
+
+        <nav class="navbar">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="plants.html">
+                Plants
+            </a>
+
+            <a href="categories.html">
+                Categories
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <div class="header-icons">
+
+
+            <!-- Search -->
+
+            <a href="products.html" title="Search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </a>
+
+
+            <a href="wishlist.html" class="nav-icon">
+    <i class="fa-regular fa-heart"></i>
+    <span class="wishlist-count"></span>
+</a>
+
+
+            <!-- Cart -->
+
+            <a href="cart.html" title="Cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="cart-count"></span>
+
+            </a>
+
+
+            <!-- Login -->
+
+            <a href="login.html" title="My Profile">
+
+                <i class="fa-solid fa-user"></i>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= LOGIN GATE (shown when logged out) ================= -->
+
+    <section class="page-header" id="loginPageHeader">
+
+        <div class="section-heading">
+
+            <p>
+                MY ACCOUNT
+            </p>
+
+            <h2>
+                Login to GreenLeaf
+            </h2>
+
+            <span>
+                Enter your details to access your profile.
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <section class="login-gate-section" id="loginGate">
+
+        <div class="login-card">
+
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h3>
+                Welcome Back
+            </h3>
+
+            <p>
+                Login to manage your orders, wishlist and address.
+            </p>
+
+            <form id="loginForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="loginFullname">
+                            Full Name
+                        </label>
+
+                        <input type="text" id="loginFullname" placeholder="Enter your full name" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+                            Email Address
+                        </label>
+
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="loginPhone">
+                            Phone Number
+                        </label>
+
+                        <input type="tel" id="loginPhone" placeholder="Enter your phone number" required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="loginDob">
+                            Date of Birth
+                        </label>
+
+                        <input type="date" id="loginDob">
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="loginAddress">
+                        Delivery Address
+                    </label>
+
+                    <textarea id="loginAddress" placeholder="Enter your delivery address" required></textarea>
+
+                </div>
+
+                <button type="submit" class="btn primary-btn">
+
+                    Login
+
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PROFILE AREA (shown when logged in) ================= -->
+
+    <div id="profileArea">
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="page-header">
+
+        <div class="section-heading">
+
+            <p>
+                MY ACCOUNT
+            </p>
+
+            <h2 id="welcomeHeading">
+                Welcome Back!
+            </h2>
+
+            <span>
+                Manage your profile, orders and saved plants here.
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PROFILE ================= -->
+
+    <section class="profile-section">
+
+
+        <!-- Sidebar -->
+
+        <aside class="profile-sidebar">
+
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h3 id="sidebarName">
+                Guest
+            </h3>
+
+            <p id="sidebarEmail">
+            </p>
+
+
+            <nav class="profile-nav">
+
+                <a href="login.html" class="active">
+                    <i class="fa-solid fa-user"></i>
+                    My Profile
+                </a>
+
+                <a href="orders.html">
+                    <i class="fa-solid fa-box"></i>
+                    My Orders
+                </a>
+
+                <a href="wishlist.html">
+                    <i class="fa-regular fa-heart"></i>
+                    Wishlist
+                </a>
+
+                <a href="address.html">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Saved Addresses
+                </a>
+
+                <a href="../index.html" class="logout-link" onclick="logoutUser()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+
+        <!-- Main Content -->
+
+        <div class="profile-content">
+
+
+            <!-- Account Overview -->
+
+            <div class="profile-card">
+
+                <div class="profile-card-header">
+
+                    <h2>
+                        Account Overview
+                    </h2>
+
+                </div>
+
+
+                <div class="profile-summary">
+
+                    <div class="summary-box">
+                        <i class="fa-solid fa-box"></i>
+                        <h3 id="statTotalOrders">
+                            0
+                        </h3>
+                        <span>
+                            Total Orders
+                        </span>
+                    </div>
+
+                    <div class="summary-box">
+                        <i class="fa-regular fa-heart"></i>
+                        <h3 id="statWishlistItems">
+                            0
+                        </h3>
+                        <span>
+                            Wishlist Items
+                        </span>
+                    </div>
+
+                    <div class="summary-box">
+                        <i class="fa-solid fa-seedling"></i>
+                        <h3 id="statPlantsOwned">
+                            0
+                        </h3>
+                        <span>
+                            Plants Owned
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Personal Information -->
+
+            <div class="profile-card">
+
+                <div class="profile-card-header">
+
+                    <h2>
+                        Personal Information
+                    </h2>
+
+                    <span>
+                        Keep your details up to date
+                    </span>
+
+                </div>
+
+
+                <form id="profileForm">
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="fullname">
+                                Full Name
+                            </label>
+
+                            <input type="text" id="fullname" placeholder="Your full name">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="pemail">
+                                Email Address
+                            </label>
+
+                            <input type="email" id="pemail" placeholder="Your email address">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="pphone">
+                                Phone Number
+                            </label>
+
+                            <input type="tel" id="pphone" placeholder="Your phone number">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="dob">
+                                Date of Birth
+                            </label>
+
+                            <input type="date" id="dob">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="address">
+                            Delivery Address
+                        </label>
+
+                        <textarea id="address" placeholder="Enter your address"></textarea>
+
+                    </div>
+
+
+                    <button type="submit" class="btn primary-btn">
+
+                        Save Changes
+
+                        <i class="fa-solid fa-check"></i>
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    </div>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+
+        <div class="footer-container">
+
+
+            <!-- Footer About -->
+
+            <div class="footer-column">
+
+
+                <div class="footer-logo">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    GreenLeaf
+
+                </div>
+
+
+                <p>
+
+                    Your online destination for beautiful,
+
+                    healthy and affordable plants.
+
+                </p>
+
+
+                <div class="social-icons">
+
+
+                    <a href="#" class="facebook" title="Facebook">
+
+                        <i class="fa-brands fa-facebook-f"></i>
+
+                    </a>
+
+
+                    <a href="#" class="instagram" title="Instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+
+                    <a href="#" class="twitter" title="Twitter">
+
+                        <i class="fa-brands fa-twitter"></i>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Quick Links -->
+
+            <div class="footer-column">
+
+
+                <h3>
+                    Quick Links
+                </h3>
+
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+
+                <a href="products.html">
+                    Plants
+                </a>
+
+
+                <a href="categories.html">
+                    Categories
+                </a>
+
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+
+            </div>
+
+
+
+            <!-- Customer Service -->
+
+            <div class="footer-column">
+
+
+                <h3>
+                    Customer Service
+                </h3>
+
+
+                <a href="login.html">
+                    My Account
+                </a>
+
+
+                <a href="cart.html">
+                    My Cart
+                </a>
+
+
+                <a href="#">
+                    Wishlist
+                </a>
+
+
+                <a href="contact.html">
+                    Help Center
+                </a>
+
+
+            </div>
+
+
+
+            <!-- Contact -->
+
+            <div class="footer-column">
+
+
+                <h3>
+                    Contact Us
+                </h3>
+
+
+                <p>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Tamil Nadu, India
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    +91 98765 43210
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    support@greenleaf.com
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 GreenLeaf. All Rights Reserved.
+
+            </p>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="../js/script.js?v=2"></script>
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                renderAuthState();
+                loadProfileDetails();
+                updateAccountOverview();
+
+                document.getElementById("loginForm")
+                    .addEventListener("submit", handleLogin);
+
+                document.getElementById("profileForm")
+                    .addEventListener("submit", handleProfileSave);
+
+            }
+        );
+
+
+        function updateAccountOverview() {
+
+            const orders =
+                getOrders();
+
+            const wishlist =
+                getWishlist();
+
+
+            let plantsOwned = 0;
+
+            orders.forEach(function (order) {
+
+                order.items.forEach(function (item) {
+
+                    plantsOwned += item.quantity;
+
+                });
+
+            });
+
+
+            document.getElementById("statTotalOrders").textContent =
+                orders.length;
+
+            document.getElementById("statWishlistItems").textContent =
+                wishlist.length;
+
+            document.getElementById("statPlantsOwned").textContent =
+                plantsOwned;
+
+        }
+
+
+        function renderAuthState() {
+
+            /* Only count as logged in if a profile
+               was actually saved through the login form */
+
+            const loggedIn =
+                isLoggedIn() && !!getProfile();
+
+            document.getElementById("loginPageHeader").style.display =
+                loggedIn ? "none" : "block";
+
+            document.getElementById("loginGate").style.display =
+                loggedIn ? "none" : "flex";
+
+            document.getElementById("profileArea").style.display =
+                loggedIn ? "block" : "none";
+
+        }
+
+
+        function handleLogin(event) {
+
+            event.preventDefault();
+
+            const profile = {
+
+                fullname: document.getElementById("loginFullname").value.trim(),
+
+                email: document.getElementById("loginEmail").value.trim(),
+
+                phone: document.getElementById("loginPhone").value.trim(),
+
+                dob: document.getElementById("loginDob").value,
+
+                address: document.getElementById("loginAddress").value.trim()
+
+            };
+
+            saveProfile(profile);
+
+            setLoggedIn(true);
+
+            alert(
+                "Logged in successfully! Welcome back 🌿"
+            );
+
+            loadProfileDetails();
+
+            renderAuthState();
+
+        }
+
+
+        function loadProfileDetails() {
+
+            const profile =
+                getProfile();
+
+            if (!profile) {
+
+                return;
+
+            }
+
+            document.getElementById("fullname").value = profile.fullname || "";
+            document.getElementById("pemail").value = profile.email || "";
+            document.getElementById("pphone").value = profile.phone || "";
+            document.getElementById("dob").value = profile.dob || "";
+            document.getElementById("address").value = profile.address || "";
+
+            document.getElementById("sidebarName").textContent =
+                profile.fullname || "Your Name";
+
+            document.getElementById("sidebarEmail").textContent =
+                profile.email || "";
+
+            document.getElementById("welcomeHeading").textContent =
+                profile.fullname
+                    ? "Welcome Back, " + profile.fullname.split(" ")[0] + "!"
+                    : "Welcome Back!";
+
+        }
+
+
+        function handleProfileSave(event) {
+
+            event.preventDefault();
+
+            const profile = {
+
+                fullname: document.getElementById("fullname").value.trim(),
+
+                email: document.getElementById("pemail").value.trim(),
+
+                phone: document.getElementById("pphone").value.trim(),
+
+                dob: document.getElementById("dob").value,
+
+                address: document.getElementById("address").value.trim()
+
+            };
+
+            saveProfile(profile);
+
+            loadProfileDetails();
+
+            alert(
+                "Profile details saved ✅"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

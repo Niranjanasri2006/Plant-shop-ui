@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Saved Addresses | GreenLeaf</title>
+
+    <meta name="description" content="Manage your GreenLeaf delivery address.">
+
+    <link rel="stylesheet" href="../css/style.css?v=2">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        .saved-address-card {
+            display: none;
+            align-items: flex-start;
+            gap: 14px;
+            background: #f4f8f2;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 26px;
+        }
+
+        .saved-address-card.show {
+            display: flex;
+        }
+
+        .saved-address-card i {
+            color: #315f2b;
+            font-size: 20px;
+            margin-top: 3px;
+        }
+
+        .saved-address-card h4 {
+            color: #234d20;
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .saved-address-card p {
+            color: #556;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .saved-address-tag {
+            display: inline-block;
+            background: #e9f5e8;
+            color: #2f7d32;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 6px;
+        }
+
+        .no-address-note {
+            color: #7c8c80;
+            font-size: 13px;
+            margin-bottom: 26px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            <i class="fa-solid fa-leaf"></i>
+            <span>GreenLeaf</span>
+        </div>
+
+        <nav class="navbar">
+            <a href="../index.html">Home</a>
+            <a href="plants.html">Plants</a>
+            <a href="categories.html">Categories</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+
+            <a href="products.html" title="Search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </a>
+
+            <a href="wishlist.html" class="nav-icon">
+                <i class="fa-regular fa-heart"></i>
+                <span class="wishlist-count"></span>
+            </a>
+
+            <a href="cart.html" title="Cart">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count"></span>
+            </a>
+
+            <a href="profile.html" title="My Profile">
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= PAGE HEADER ================= -->
+
+    <section class="page-header">
+        <div class="section-heading">
+            <p>DELIVERY DETAILS</p>
+            <h2>Saved Addresses</h2>
+            <span>Keep your delivery address up to date.</span>
+        </div>
+    </section>
+
+
+    <!-- ================= PROFILE ================= -->
+
+    <section class="profile-section">
+
+        <!-- Sidebar -->
+
+        <aside class="profile-sidebar">
+
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <h3 id="sidebarName">Priya Raman</h3>
+            <p id="sidebarEmail">priya.raman@example.com</p>
+
+            <nav class="profile-nav">
+
+                <a href="login.html">
+                    <i class="fa-solid fa-user"></i>
+                    My Profile
+                </a>
+
+                <a href="orders.html">
+                    <i class="fa-solid fa-box"></i>
+                    My Orders
+                </a>
+
+                <a href="wishlist.html">
+                    <i class="fa-regular fa-heart"></i>
+                    Wishlist
+                </a>
+
+                <a href="address.html" class="active">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Saved Addresses
+                </a>
+
+                <a href="../index.html" class="logout-link" onclick="logoutUser()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- Main Content -->
+
+        <div class="profile-content">
+
+            <div class="profile-card">
+
+                <div class="profile-card-header">
+                    <h2>Delivery Address</h2>
+                    <span>This is where your orders will be shipped</span>
+                </div>
+
+                <div id="savedAddressCard" class="saved-address-card">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <span class="saved-address-tag">Home</span>
+                        <h4 id="savedAddressName"></h4>
+                        <p id="savedAddressText"></p>
+                    </div>
+                </div>
+
+                <p id="noAddressNote" class="no-address-note">
+                    No address saved yet — fill the form below and save it.
+                </p>
+
+                <form id="addressForm">
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="addrName">Full Name</label>
+                            <input type="text" id="addrName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addrPhone">Phone Number</label>
+                            <input type="tel" id="addrPhone" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="addrCity">City</label>
+                            <input type="text" id="addrCity" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="addrPincode">Pincode</label>
+                            <input type="text" id="addrPincode" required>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="addrLine">Full Address</label>
+                        <textarea id="addrLine" placeholder="House no, street, area, state" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn primary-btn">
+                        Save Address
+                        <i class="fa-solid fa-check"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-column">
+
+                <div class="footer-logo">
+                    <i class="fa-solid fa-leaf"></i>
+                    GreenLeaf
+                </div>
+
+                <p>Your online destination for beautiful, healthy and affordable plants.</p>
+
+                <div class="social-icons">
+                    <a href="#" class="facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="twitter" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <a href="../index.html">Home</a>
+                <a href="products.html">Plants</a>
+                <a href="categories.html">Categories</a>
+                <a href="about.html">About Us</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Customer Service</h3>
+                <a href="login.html">My Account</a>
+                <a href="cart.html">My Cart</a>
+                <a href="#">Wishlist</a>
+                <a href="contact.html">Help Center</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-location-dot"></i> Tamil Nadu, India</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-envelope"></i> support@greenleaf.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 GreenLeaf. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="../js/script.js?v=2"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            if (!isLoggedIn()) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            renderSavedAddress();
+
+            document.getElementById("addressForm")
+                .addEventListener("submit", handleAddressSave);
+
+        });
+
+
+        function renderSavedAddress() {
+
+            const address = getAddress();
+
+            const card = document.getElementById("savedAddressCard");
+            const note = document.getElementById("noAddressNote");
+
+            if (!address) {
+                card.classList.remove("show");
+                note.style.display = "block";
+                return;
+            }
+
+            note.style.display = "none";
+            card.classList.add("show");
+
+            document.getElementById("savedAddressName").textContent = address.name;
+
+            document.getElementById("savedAddressText").textContent =
+                address.line + ", " + address.city + " - " + address.pincode +
+                " | " + address.phone;
+
+            document.getElementById("addrName").value = address.name;
+            document.getElementById("addrPhone").value = address.phone;
+            document.getElementById("addrCity").value = address.city;
+            document.getElementById("addrPincode").value = address.pincode;
+            document.getElementById("addrLine").value = address.line;
+
+        }
+
+
+        function handleAddressSave(event) {
+
+            event.preventDefault();
+
+            const address = {
+                name: document.getElementById("addrName").value.trim(),
+                phone: document.getElementById("addrPhone").value.trim(),
+                city: document.getElementById("addrCity").value.trim(),
+                pincode: document.getElementById("addrPincode").value.trim(),
+                line: document.getElementById("addrLine").value.trim()
+            };
+
+            saveAddress(address);
+            renderSavedAddress();
+
+            alert("Address saved successfully ✅");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

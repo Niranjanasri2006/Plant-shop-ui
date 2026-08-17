@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Cart | GreenLeaf</title>
+
+    <link rel="stylesheet" href="../css/style.css?v=2">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        .cart-page {
+            padding: 60px 6% 70px;
+            min-height: 70vh;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: white;
+            border: 1px solid #e4ece1;
+            border-radius: 16px;
+            padding: 18px;
+        }
+
+        .cart-item-image {
+            width: 110px;
+            height: 110px;
+            flex-shrink: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f3f7f1;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info small {
+            color: #75a66b;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .cart-item-info h3 {
+            color: #234d20;
+            margin: 6px 0;
+            font-size: 18px;
+        }
+
+        .cart-item-price {
+            color: #315f2b;
+            font-weight: 700;
+        }
+
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #dce7d9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .quantity-box button {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: #f3f7f1;
+            color: #315f2b;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .quantity-box span {
+            width: 35px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .remove-cart {
+            border: none;
+            background: none;
+            color: #d05252;
+            cursor: pointer;
+            font-size: 17px;
+            margin-left: 10px;
+        }
+
+        .cart-summary {
+            background: #f4f8f2;
+            border-radius: 18px;
+            padding: 25px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .cart-summary h2 {
+            color: #234d20;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .summary-row.discount {
+            color: #4f8a45;
+        }
+
+        .summary-total {
+            border-top: 1px solid #d8e4d5;
+            padding-top: 18px;
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            color: #234d20;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .offer-box {
+            background: white;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 20px 0;
+            color: #315f2b;
+            font-size: 13px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            border: none;
+            background: #315f2b;
+            color: white;
+            padding: 14px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .checkout-btn:hover {
+            background: #234d20;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .empty-cart i {
+            font-size: 55px;
+            color: #9ab493;
+            margin-bottom: 20px;
+        }
+
+        .empty-cart h2 {
+            color: #234d20;
+        }
+
+        .empty-cart p {
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            background: #315f2b;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+
+        @media (max-width: 900px) {
+
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-summary {
+                position: static;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .cart-item {
+                flex-wrap: wrap;
+            }
+
+            .cart-item-image {
+                width: 90px;
+                height: 90px;
+            }
+
+            .cart-item-info {
+                min-width: calc(100% - 110px);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <i class="fa-solid fa-leaf"></i>
+
+        <span>
+            GreenLeaf
+        </span>
+
+    </div>
+
+
+    <nav class="navbar">
+
+        <a href="../index.html">
+            Home
+        </a>
+
+        <a href="plants.html">
+            Plants
+        </a>
+
+        <a href="categories.html">
+            Categories
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </nav>
+
+
+    <div class="header-icons">
+
+        <a href="products.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+
+
+        <a href="wishlist.html"
+           class="nav-icon">
+
+            <i class="fa-regular fa-heart"></i>
+
+            <span class="wishlist-count"></span>
+
+        </a>
+
+
+        <a href="cart.html">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            <span class="cart-count"></span>
+
+        </a>
+
+
+        <a href="login.html">
+
+            <i class="fa-regular fa-user"></i>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= CART ================= -->
+
+<!-- ================= PAGE HERO ================= -->
+
+<section class="page-header">
+
+    <div class="section-heading">
+
+        <p>
+            YOUR SHOPPING BAG
+        </p>
+
+        <h2>
+            My Cart
+        </h2>
+
+        <span>
+            Review your selected plants before checkout.
+        </span>
+
+    </div>
+
+</section>
+
+
+<main class="cart-page">
+
+
+    <div
+        class="cart-layout"
+        id="cartLayout">
+
+
+        <!-- CART ITEMS -->
+
+        <div
+            class="cart-items"
+            id="cartItems">
+
+        </div>
+
+
+        <!-- SUMMARY -->
+
+        <div class="cart-summary">
+
+            <h2>Order Summary</h2>
+
+
+            <div class="summary-row">
+
+                <span>Subtotal</span>
+
+                <span id="subtotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="summary-row discount">
+
+                <span>Offer Discount</span>
+
+                <span id="discount">
+                    - ₹0
+                </span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>Delivery</span>
+
+                <span id="delivery">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="offer-box">
+
+                🎉 Get <strong>10% OFF</strong>
+                on orders above ₹1000
+
+            </div>
+
+
+            <div class="summary-total">
+
+                <span>Total</span>
+
+                <span id="grandTotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <button
+                class="checkout-btn"
+                onclick="checkout()">
+
+                Proceed to Checkout
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer"
+        id="contact">
+
+
+        <div class="footer-container">
+
+
+            <!-- Footer About -->
+
+            <div class="footer-column">
+
+
+                <div class="footer-logo">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    GreenLeaf
+
+                </div>
+
+
+                <p>
+
+                    Your online destination for beautiful,
+
+                    healthy and affordable plants.
+
+                </p>
+
+
+               <div class="social-icons">
+
+
+                    <a href="#" class="facebook" title="Facebook">
+
+                        <i class="fa-brands fa-facebook-f"></i>
+
+                    </a>
+
+
+                    <a href="#" class="instagram" title="Instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+
+                    <a href="#" class="twitter" title="Twitter">
+
+                        <i class="fa-brands fa-twitter"></i>
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- Quick Links -->
+
+            <div class="footer-column">
+
+
+                <h3>
+                    Quick Links
+                </h3>
+
+
+                <a href="index.html">
+                    Home
+                </a>
+
+
+                <a href="pages/products.html">
+                    Plants
+                </a>
+
+
+                <a href="pages/categories.html">
+                    Categories
+                </a>
+
+
+                <a href="pages/about.html">
+                    About Us
+                </a>
+
+
+            </div>
+
+
+
+            <!-- Customer Service -->
+
+            <div class="footer-column">
+
+
+                <h3>
+                    Customer Service
+                </h3>
+
+
+                <a href="pages/login.html">
+                    My Account
+                </a>
+
+
+                <a href="pages/cart.html">
+                    My Cart
+                </a>
+
+
+                <a href="#">
+                    Wishlist
+                </a>
+
+
+                <a href="pages/contact.html">
+                    Help Center
+                </a>
+
+
+            </div>
+
+
+
+            <!-- Contact -->
+
+            <div class="footer-column">
+
+
+                <h3>
+                    Contact Us
+                </h3>
+
+
+                <p>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Tamil Nadu, India
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    +91 98765 43210
+
+                </p>
+
+
+                <p>
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    support@greenleaf.com
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <p>
+
+                © 2026 GreenLeaf. All Rights Reserved.
+
+            </p>
+
+        </div>
+
+
+    </footer>
+
+
+<!-- COMMON SCRIPT -->
+
+<script src="../js/script.js?v=2"></script>
+
+
+<!-- CART PAGE SCRIPT -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        displayCart();
+
+    }
+);
+
+
+function displayCart() {
+
+    const cart =
+        getCart();
+
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    /* EMPTY CART */
+
+    if (cart.length === 0) {
+
+        container.innerHTML = `
+
+            <div class="empty-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <h2>Your Cart is Empty</h2>
+
+                <p>
+                    Add some beautiful plants
+                    to your cart.
+                </p>
+
+                <a
+                    href="plants.html"
+                    class="shop-btn">
+
+                    Shop Plants
+
+                </a>
+
+            </div>
+
+        `;
+
+        updateSummary();
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    cart.forEach(function (product) {
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "cart-item";
+
+
+        item.innerHTML = `
+
+            <div class="cart-item-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}">
+
+            </div>
+
+
+            <div class="cart-item-info">
+
+                <small>
+                    ${product.category || "Plant"}
+                </small>
+
+                <h3>
+                    ${product.name}
+                </h3>
+
+                <div class="cart-item-price">
+                    ₹${product.price}
+                </div>
+
+            </div>
+
+
+            <div class="quantity-box">
+
+                <button
+                    onclick="updateCartQuantity(
+                        '${product.id}',
+                        -1
+                    )">
+
+                    −
+
+                </button>
+
+
+                <span>
+                    ${product.quantity}
+                </span>
+
+
+                <button
+                    onclick="updateCartQuantity(
+                        '${product.id}',
+                        1
+                    )">
+
+                    +
+
+                </button>
+
+            </div>
+
+
+            <button
+                class="remove-cart"
+                onclick="removeCartItem(
+                    '${product.id}'
+                )">
+
+                <i class="fa-solid fa-trash"></i>
+
+            </button>
+
+        `;
+
+
+        container.appendChild(item);
+
+    });
+
+
+    updateSummary();
+
+}
+
+
+function updateCartQuantity(id, change) {
+
+    changeQuantity(id, change);
+
+    displayCart();
+
+}
+
+
+function removeCartItem(id) {
+
+    removeFromCart(id);
+
+    displayCart();
+
+}
+
+
+function updateSummary() {
+
+    const cart =
+        getCart();
+
+
+    let subtotal = 0;
+
+
+    cart.forEach(function (product) {
+
+        subtotal +=
+            product.price *
+            product.quantity;
+
+    });
+
+
+    /* 10% OFFER */
+
+    let discount = 0;
+
+
+    if (subtotal >= 1000) {
+
+        discount =
+            subtotal * 0.10;
+
+    }
+
+
+    /* DELIVERY */
+
+    let delivery = 0;
+
+
+    if (subtotal > 0) {
+
+        delivery = 50;
+
+    }
+
+
+    /* FREE DELIVERY ABOVE 1500 */
+
+    if (subtotal >= 1500) {
+
+        delivery = 0;
+
+    }
+
+
+    const total =
+        subtotal -
+        discount +
+        delivery;
+
+
+    document.getElementById(
+        "subtotal"
+    ).textContent =
+        "₹" + subtotal.toFixed(0);
+
+
+    document.getElementById(
+        "discount"
+    ).textContent =
+        "- ₹" + discount.toFixed(0);
+
+
+    document.getElementById(
+        "delivery"
+    ).textContent =
+        delivery === 0
+            ? "FREE"
+            : "₹" + delivery;
+
+
+    document.getElementById(
+        "grandTotal"
+    ).textContent =
+        "₹" + total.toFixed(0);
+
+}
+
+
+function checkout() {
+
+    const cart =
+        getCart();
+
+
+    if (cart.length === 0) {
+
+        alert(
+            "Your cart is empty!"
+        );
+
+        return;
+
+    }
+
+
+    const order =
+        placeOrder();
+
+
+    if (order) {
+
+        alert(
+            "Order placed successfully! 🎉\nOrder ID: " +
+            order.id
+        );
+
+        window.location.href = "orders.html";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>

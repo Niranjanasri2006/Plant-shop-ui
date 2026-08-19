@@ -160,121 +160,6 @@
 
 
 
-    <!-- ================= LOGIN GATE (shown when logged out) ================= -->
-
-    <section class="page-header" id="loginPageHeader">
-
-        <div class="section-heading">
-
-            <p>
-                MY ACCOUNT
-            </p>
-
-            <h2>
-                Login to GreenLeaf
-            </h2>
-
-            <span>
-                Enter your details to access your profile.
-            </span>
-
-        </div>
-
-    </section>
-
-
-    <section class="login-gate-section" id="loginGate">
-
-        <div class="login-card">
-
-            <div class="profile-avatar">
-                <i class="fa-solid fa-user"></i>
-            </div>
-
-            <h3>
-                Welcome Back
-            </h3>
-
-            <p>
-                Login to manage your orders, wishlist and address.
-            </p>
-
-            <form id="loginForm">
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label for="loginFullname">
-                            Full Name
-                        </label>
-
-                        <input type="text" id="loginFullname" placeholder="Enter your full name" required>
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="loginEmail">
-                            Email Address
-                        </label>
-
-                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
-
-                    </div>
-
-                </div>
-
-                <div class="form-row">
-
-                    <div class="form-group">
-
-                        <label for="loginPhone">
-                            Phone Number
-                        </label>
-
-                        <input type="tel" id="loginPhone" placeholder="Enter your phone number" required>
-
-                    </div>
-
-                    <div class="form-group">
-
-                        <label for="loginDob">
-                            Date of Birth
-                        </label>
-
-                        <input type="date" id="loginDob">
-
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label for="loginAddress">
-                        Delivery Address
-                    </label>
-
-                    <textarea id="loginAddress" placeholder="Enter your delivery address" required></textarea>
-
-                </div>
-
-                <button type="submit" class="btn primary-btn">
-
-                    Login
-
-                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
-
-                </button>
-
-            </form>
-
-        </div>
-
-    </section>
-
-
-
     <!-- ================= PROFILE AREA (shown when logged in) ================= -->
 
     <div id="profileArea">
@@ -720,12 +605,8 @@
             "DOMContentLoaded",
             function () {
 
-                renderAuthState();
                 loadProfileDetails();
                 updateAccountOverview();
-
-                document.getElementById("loginForm")
-                    .addEventListener("submit", handleLogin);
 
                 document.getElementById("profileForm")
                     .addEventListener("submit", handleProfileSave);
@@ -764,59 +645,6 @@
 
             document.getElementById("statPlantsOwned").textContent =
                 plantsOwned;
-
-        }
-
-
-        function renderAuthState() {
-
-            /* Only count as logged in if a profile
-               was actually saved through the login form */
-
-            const loggedIn =
-                isLoggedIn() && !!getProfile();
-
-            document.getElementById("loginPageHeader").style.display =
-                loggedIn ? "none" : "block";
-
-            document.getElementById("loginGate").style.display =
-                loggedIn ? "none" : "flex";
-
-            document.getElementById("profileArea").style.display =
-                loggedIn ? "block" : "none";
-
-        }
-
-
-        function handleLogin(event) {
-
-            event.preventDefault();
-
-            const profile = {
-
-                fullname: document.getElementById("loginFullname").value.trim(),
-
-                email: document.getElementById("loginEmail").value.trim(),
-
-                phone: document.getElementById("loginPhone").value.trim(),
-
-                dob: document.getElementById("loginDob").value,
-
-                address: document.getElementById("loginAddress").value.trim()
-
-            };
-
-            saveProfile(profile);
-
-            setLoggedIn(true);
-
-            alert(
-                "Logged in successfully! Welcome back 🌿"
-            );
-
-            loadProfileDetails();
-
-            renderAuthState();
 
         }
 

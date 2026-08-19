@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Plant Details | GreenLeaf</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../css/style.css?v=2">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <!-- Logo -->
+        <a href="../index.html" class="logo">
+
+            <i class="fa-solid fa-leaf"></i>
+
+            <span>
+                GreenLeaf
+            </span>
+
+        </a>
+
+
+        <!-- Navigation -->
+        <nav class="navbar">
+
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="plants.html">
+                Plants
+            </a>
+
+            <a href="categories.html">
+                Categories
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <!-- Header Icons -->
+        <div class="header-icons">
+
+            <!-- Search -->
+            <a href="plants.html" title="Search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+            </a>
+
+
+            <!-- Wishlist -->
+            <a href="wishlist.html" title="Wishlist">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span class="wishlist-count"></span>
+
+            </a>
+
+
+            <!-- Cart -->
+            <a href="cart.html" title="Cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="cart-count"></span>
+
+            </a>
+
+
+            <!-- Login -->
+            <a href="login.html" title="Login">
+
+                <i class="fa-regular fa-user"></i>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= PAGE HERO ================= -->
+
+    <section class="plants-page-header">
+
+        <div class="section-heading">
+
+            <p>
+                GREENLEAF COLLECTION
+            </p>
+
+            <h1>
+                Plant Details
+            </h1>
+
+            <span>
+                Everything you need to know before you bring it home.
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PLANT DETAIL ================= -->
+
+    <section class="detail-section">
+
+        <!-- JavaScript dynamically fills this container based on ?id= -->
+        <div class="detail-container" id="plantDetailContainer">
+        </div>
+
+    </section>
+
+
+    <!-- ================= YOU MIGHT ALSO LIKE ================= -->
+
+    <section class="related-section">
+
+        <div class="section-heading">
+
+            <p>
+                EXPLORE MORE
+            </p>
+
+            <h2>
+                You Might Also Like
+            </h2>
+
+        </div>
+
+        <div class="related-carousel">
+
+            <button type="button" class="carousel-arrow carousel-prev" id="relatedPrevBtn" aria-label="Previous plants">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="related-carousel-viewport">
+                <div class="related-track" id="relatedPlants">
+                </div>
+            </div>
+
+            <button type="button" class="carousel-arrow carousel-next" id="relatedNextBtn" aria-label="Next plants">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <!-- Footer About -->
+
+            <div class="footer-column">
+
+                <div class="footer-logo">
+
+                    <i class="fa-solid fa-leaf"></i>
+
+                    GreenLeaf
+
+                </div>
+
+
+                <p>
+                    Your online destination for beautiful,
+                    healthy and affordable plants.
+                </p>
+
+                <div class="social-icons">
+
+
+                    <a href="#" class="facebook" title="Facebook">
+
+                        <i class="fa-brands fa-facebook-f"></i>
+
+                    </a>
+
+
+                    <a href="#" class="instagram" title="Instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+
+                    <a href="#" class="twitter" title="Twitter">
+
+                        <i class="fa-brands fa-twitter"></i>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Quick Links -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Quick Links
+                </h3>
+
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="plants.html">
+                    Plants
+                </a>
+
+                <a href="categories.html">
+                    Categories
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+            </div>
+
+
+
+            <!-- Customer Service -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Customer Service
+                </h3>
+
+
+                <a href="login.html">
+                    My Account
+                </a>
+
+                <a href="cart.html">
+                    My Cart
+                </a>
+
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+
+                <a href="contact.html">
+                    Help Center
+                </a>
+
+            </div>
+
+
+
+            <!-- Contact -->
+
+            <div class="footer-column">
+
+                <h3>
+                    Contact Us
+                </h3>
+
+
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Tamil Nadu, India
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    +91 98765 43210
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    support@greenleaf.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 GreenLeaf. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= ORDER CONFIRMED POPUP ================= -->
+
+    <div class="order-confirm-overlay" id="orderConfirmOverlay">
+
+        <div class="order-confirm-box">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <h3>Order Confirmed!</h3>
+
+            <p>
+                Your order has been placed successfully.
+                You can track it anytime from My Orders.
+            </p>
+
+            <button type="button" class="btn primary-btn" id="orderConfirmViewBtn">
+                View My Orders
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+   <script src="../js/script.js?v=2"></script>
+
+</body>
+
+</html>

@@ -8,7 +8,7 @@
    AUTH CONFIG
    ===================================================== */
 
-const AUTH_API_BASE = "http://localhost:5000/api/auth";
+const AUTH_API_BASE = "https://greenleaf-backend-1.onrender.com/api/auth";
 
 
 /* =====================================================
